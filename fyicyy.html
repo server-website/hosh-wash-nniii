@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy birthday!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        @font-face {
+    font-family: 'Mikhak';
+    src: url('./files/Mikhak.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* حالا می‌تونی از فونت استفاده کنی */
+body {
+    font-family: 'Mikhak', 'Segoe UI', Tahoma, sans-serif;
+}
+
+.main-title {
+    font-family: 'Mikhak', cursive;
+    font-weight: bold;
+          }
+        body {
+            background: linear-gradient(135deg, #ffb6c1, #87ceeb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mist {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            z-index: 2;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+        
+        h1 {
+            color: #e91e63;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .birthday-message {
+            color: #2196f3;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .balloons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .balloon {
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .balloon:nth-child(1) {
+            background-color: #ff4081;
+            animation-delay: 0s;
+        }
+        
+        .balloon:nth-child(2) {
+            background-color: #2196f3;
+            animation-delay: 0.5s;
+        }
+        
+        .balloon:nth-child(3) {
+            background-color: #ff9800;
+            animation-delay: 1s;
+        }
+        
+        .balloon:nth-child(4) {
+            background-color: #4caf50;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .cake {
+            width: 150px;
+            height: 80px;
+            margin: 20px auto;
+            position: relative;
+        }
+        
+        .cake-base {
+            width: 150px;
+            height: 40px;
+            background: linear-gradient(to bottom, #8d6e63, #5d4037);
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .cake-top {
+            width: 130px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ffcdd2, #f8bbd0);
+            border-radius: 10px 10px 0 0;
+            margin: 0 auto;
+        }
+        
+        .candle {
+            width: 10px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ffeb3b, #ffc107);
+            margin: 0 auto;
+            position: relative;
+            top: -15px;
+        }
+        
+        .flame {
+            width: 15px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ff9800, #ff5722);
+            border-radius: 50% 50% 20% 20%;
+            margin: 0 auto;
+            position: relative;
+            top: -25px;
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f44336;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: confetti-fall 5s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .hearts {
+            position: absolute;
+            font-size: 20px;
+            color: #e91e63;
+            animation: hearts-float 6s linear infinite;
+        }
+        
+        @keyframes hearts-float {
+            0% {
+                transform: translateY(100px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .birthday-wish {
+            background: linear-gradient(135deg, #e91e63, #2196f3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mist"></div>
+    
+    <div class="container">
+        <h1>سوپرایز! 🎉</h1>
+        
+        <div class="birthday-message">
+            <p>۱۲آبان ، تولدت مبارک</p>
+            <p>
+              امیدوارم سال دیگه بچه‌بقل این جشنو بگیریم ‌، تولدت مبارک!
+            </p>
+        </div>
+        
+        <div class="balloons">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+        </div>
+        
+        <div class="cake">
+            <div class="cake-base"></div>
+            <div class="cake-top"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+        </div>
+        
+        <div class="birthday-wish">
+            برایت آرزوی بهترین ها را دارم! ✨️😊💖
+        </div>
+    </div>
+
+    <script>
+        // ایجاد کنفتی‌های متحرک
+        function createConfetti() {
+            const colors = ['#e91e63', '#2196f3', '#ffeb3b', '#4caf50', '#ff9800'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(confetti);
+            }
+        }
+        
+        // ایجاد قلب‌های شناور
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'hearts';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        
+        // اجرای افکت‌ها پس از لود صفحه
+        window.addEventListener('load', function() {
+            createConfetti();
+            createHearts();
+        });
+    </script>
+</body>
+</html>
